@@ -15,10 +15,9 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/college_club/about.php" class="text-white">About Us</a></li>
-                        <li><a href="/college_club/events.php" class="text-white">Events</a></li>
-                        <li><a href="/college_club/blog.php" class="text-white">Blog</a></li>
-                        <li><a href="/college_club/contact.php" class="text-white">Contact</a></li>
+                        <li><a href="../about.php" class="text-white">About Us</a></li>
+                        <li><a href="../events.php" class="text-white">Events</a></li>
+                        <li><a href="../contact.php" class="text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -37,6 +36,6 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/college_club/assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

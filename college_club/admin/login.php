@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Check if user is already logged in
+// Redirect if already logged in as admin
 if (isset($_SESSION['user_id']) && ($_SESSION['user_role'] ?? '') === 'admin') {
     header('Location: dashboard.php');
     exit();
@@ -10,12 +10,12 @@ if (isset($_SESSION['user_id']) && ($_SESSION['user_role'] ?? '') === 'admin') {
 $page_title = 'Admin Login';
 require_once '../includes/header.php';
 
-// Check for login errors
 $error = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../includes/config.php';
     
-    $email = $_POST['email'] ?? '';
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     
     if (empty($email) || empty($password)) {
@@ -25,49 +25,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "SELECT id, name, email, password, role FROM users WHERE email = ? AND role = 'admin'";
         
         if ($stmt = $conn->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $username);
-            
-            // Attempt to execute the prepared statement
+            $stmt->bind_param("s", $email);  // ✅ Fixed: Use $email, not $username
+
             if ($stmt->execute()) {
-                // Store result
                 $stmt->store_result();
-                
-                // Check if username exists, if yes then verify password
-                if ($stmt->num_rows == 1) {                    
-                    // Bind result variables
-                    $stmt->bind_result($id, $name, $email, $hashed_password, $role);
-                    if ($stmt->fetch()) {
-                        if (password_verify($password, $hashed_password)) {
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION['user_id'] = $id;
-                            $_SESSION['name'] = $name;                            
-                            $_SESSION['user_role'] = $role;
-                            
-                            // Redirect user to dashboard page
-                            header("location: dashboard.php");
-                            exit();
-                        } else {
-                            // Display an error message if password is not valid
-                            $error = 'The password you entered was not valid.';
-                        }
+
+                if ($stmt->num_rows === 1) {
+                    $stmt->bind_result($id, $name, $email_db, $hashed_password, $role);
+
+                    if ($stmt->fetch() && password_verify($password, $hashed_password)) {
+                        // Login successful
+                        $_SESSION['user_id'] = $id;
+                        $_SESSION['name'] = $name;
+                        $_SESSION['user_role'] = $role;
+
+                        header('Location: dashboard.php');
+                        exit();
+                    } else {
+                        $error = 'Incorrect password.';
                     }
                 } else {
-                    // Display an error message if username doesn't exist
-                    $error = 'No account found with that username or you do not have admin privileges.';
+                    $error = 'No admin account found with that email.';
                 }
             } else {
-                $error = 'Oops! Something went wrong. Please try again later.';
+                $error = 'Something went wrong. Please try again later.';
             }
 
-            // Close statement
             $stmt->close();
         }
-        
-        // Close connection
+
         $conn->close();
     }
 }

@@ -72,7 +72,7 @@ $formatted_time = $event_date->format('g:i A');
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm mb-4">
                     <?php if (!empty($event['image'])): ?>
-                    <img src="/college_club/uploads/events/<?php echo htmlspecialchars($event['image']); ?>" 
+                    <img src="./uploads/events/<?php echo htmlspecialchars($event['image']); ?>" 
                          class="card-img-top" alt="<?php echo htmlspecialchars($event['title']); ?>">
                     <?php endif; ?>
                     <div class="card-body p-4">

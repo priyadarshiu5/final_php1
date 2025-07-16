@@ -27,7 +27,7 @@ require_once 'includes/config.php';
                 <a href="about.php" class="btn btn-outline-primary">Learn More</a>
             </div>
             <div class="col-lg-6">
-                <img src="/college_club/assets/images/about.jpg" alt="About College Club" class="img-fluid rounded-lg shadow">
+                <img src="./assets/images/about.jpg" alt="About College Club" class="img-fluid rounded-lg shadow">
             </div>
         </div>
     </div>

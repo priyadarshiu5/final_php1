@@ -51,7 +51,7 @@ require_once 'includes/config.php';
                                         <span class="event-day"><?php echo $day; ?></span>
                                         <span class="event-month"><?php echo $month; ?></span>
                                     </div>
-                                    <img src="/college_club/uploads/events/<?php echo htmlspecialchars($row['image']); ?>" 
+                                    <img src="./uploads/events/<?php echo htmlspecialchars($row['image']); ?>" 
                                          class="img-fluid rounded-start h-100" alt="<?php echo htmlspecialchars($row['title']); ?>" 
                                          style="object-fit: cover; min-height: 200px;">
                                 </div>
@@ -122,7 +122,7 @@ require_once 'includes/config.php';
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="position-relative">
-                                <img src="/college_club/uploads/events/<?php echo htmlspecialchars($row['image']); ?>" 
+                                <img src="./uploads/events/<?php echo htmlspecialchars($row['image']); ?>" 
                                      class="card-img-top" alt="<?php echo htmlspecialchars($row['title']); ?>"
                                      style="height: 180px; object-fit: cover;">
                                 <div class="event-date-overlay-sm">

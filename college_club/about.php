@@ -12,7 +12,7 @@ require_once 'includes/config.php';
                 <h1 class="display-4">About Our Club</h1>
                 <nav aria-label="breadcrumb" class="d-flex justify-content-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/college_club">Home</a></li>
+                        <li class="breadcrumb-item"><a href=".">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">About Us</li>
                     </ol>
                 </nav>
@@ -32,7 +32,7 @@ require_once 'includes/config.php';
                 <p>We believe in creating an inclusive environment where students from all backgrounds can come together to learn, share, and grow both personally and professionally.</p>
             </div>
             <div class="col-lg-6">
-                <img src="/college_club/assets/images/about-story.jpg" alt="Our Story" class="img-fluid rounded-lg shadow">
+                <img src="./assets/images/about-story.jpg" alt="Our Story" class="img-fluid rounded-lg shadow">
             </div>
         </div>
     </div>
